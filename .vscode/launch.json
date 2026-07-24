@@ -15,8 +15,14 @@
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "https://localhost:4200",
+            "webRoot": "${workspaceFolder}/Client/"
         }
-
 
     ]
 }
