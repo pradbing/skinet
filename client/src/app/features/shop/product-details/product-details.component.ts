@@ -33,9 +33,9 @@ import { MatDivider } from '@angular/material/divider';
 export class ProductDetailsComponent  implements OnInit{
   private shopService = inject(ShopService);
   private activatedRoute = inject(ActivatedRoute);
-  //product?: Product;
-    private readonly destroyRef = inject(DestroyRef);
-  product? = signal<Product | undefined>(undefined) ;
+
+  private readonly destroyRef = inject(DestroyRef);
+  product = signal<Product | undefined>(undefined) ;
 
   ngOnInit(): void {
     this.loadProduct();
@@ -45,12 +45,17 @@ export class ProductDetailsComponent  implements OnInit{
     const id=this.activatedRoute.snapshot.paramMap.get('id');
     if(!id) return;
 
-  this.shopService.getProduct(+id).pipe(
-      tap(data => this.product?.set(data)),
-        takeUntilDestroyed(this.destroyRef)
-    ).subscribe();    
-  
-    
+  // this.shopService.getProduct(+id).pipe(
+  //     tap(data => this.product?.set(data)),
+  //       takeUntilDestroyed(this.destroyRef)
+  //   ).subscribe();    
+    this.shopService.getProduct(+id).subscribe({
+      next:product => {
+        this.product?.set(product)
+      },
+      error: error => console.log(error)
+    }) 
   }
+  
 
 }

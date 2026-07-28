@@ -58,21 +58,25 @@ initializeShop(){
 }
 
 getProducts(){
-  // this.shopService.getProducts(this.shopParams).subscribe({
-  // next:response => this.products = response,
-  // error:error => console.error(error)
-  // });
+  this.shopService.getProducts(this.shopParams).subscribe({
+  next:response => this.products.set(response),
+  error:error => console.error(error)
+  });
 
-  this.shopService.getProducts(this.shopParams).pipe(
-  tap(data=>this.products.set(data)),
-  takeUntilDestroyed(this.destroyRef)
-  ).subscribe();
+  // this.shopService.getProducts(this.shopParams).pipe(
+  // tap(data=>this.products.set(data)),
+  // takeUntilDestroyed(this.destroyRef)
+  // ).subscribe();
   
 }
 
 onSearchChange(){
   this.shopParams.pageNumber = 1;
-  this.getProducts();
+  //this.getProducts();
+  this.shopService.getProducts(this.shopParams).subscribe({
+  next:response => this.products.set(response),
+  error:error => console.error(error)
+  });
 }
 
 handlePageEvent(event: PageEvent){
