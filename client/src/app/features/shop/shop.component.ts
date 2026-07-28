@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, Signal, signal } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit , signal, Signal} from '@angular/core';
 import { ShopService } from '../../core/services/shop.service';
 import { Product } from '../../shared/models/product';
 import { ProductItemComponent } from "./product-item/product-item.component";
@@ -12,6 +12,8 @@ import { ShopParams } from '../../shared/models/shopParams';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Pagination } from '../../shared/models/pagination';
 import { FormsModule } from '@angular/forms';
+import { tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-shop',
@@ -33,9 +35,9 @@ import { FormsModule } from '@angular/forms';
   export class ShopComponent implements OnInit {
   private shopService = inject(ShopService);
   private dialogService = inject(MatDialog);
-
-  products?: Pagination<Product> ;
-
+  private readonly destroyRef = inject(DestroyRef);
+  //products?: Pagination<Product> ;
+products = signal<Pagination<Product> | undefined>(undefined);
   sortOptions = [
     {name:'Alphabetical', value:'name'    },
     {name:'Price: Low-High', value:'priceAsc'    },
@@ -56,10 +58,16 @@ initializeShop(){
 }
 
 getProducts(){
-  this.shopService.getProducts(this.shopParams).subscribe({
-  next:response => this.products = response,
-  error:error => console.error(error)
-  });
+  // this.shopService.getProducts(this.shopParams).subscribe({
+  // next:response => this.products = response,
+  // error:error => console.error(error)
+  // });
+
+  this.shopService.getProducts(this.shopParams).pipe(
+  tap(data=>this.products.set(data)),
+  takeUntilDestroyed(this.destroyRef)
+  ).subscribe();
+  
 }
 
 onSearchChange(){

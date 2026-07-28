@@ -1,10 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { inject, Service } from '@angular/core';
+import { inject, Injectable, Service } from '@angular/core';
 import { Pagination } from '../../shared/models/pagination';
 import { Product } from '../../shared/models/product';
 import { ShopParams } from '../../shared/models/shopParams';
 
-@Service()
+// @Service()
+@Injectable({
+  providedIn:'root'
+})
 export class ShopService {
 baseUrl ="https://localhost:5001/api/"
 private http = inject(HttpClient);
@@ -36,6 +39,10 @@ getProducts(shopParams: ShopParams){
   params = params.append('pageIndex',shopParams.pageNumber);
   
   return this.http.get<Pagination<Product>>(this.baseUrl + 'products',{params});
+}
+
+getProduct(id:number){
+  return this.http.get<Product>(this.baseUrl + 'products/' + id);
 }
 
 getBrands()

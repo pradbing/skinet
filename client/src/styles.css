@@ -3,8 +3,15 @@
 @import 'tailwindcss';
 
 .container {
-    @apply mx-auto px-6
+    @apply mx-auto px-6 max-w-screen-2xl
 }
 .text-primary{
     @apply text-blue-700
+}
+
+button.match-input-height{
+    height: var(--mat-form-field-container-height) !important;
+}
+.mdc-notched-outline__notch{
+ border-right-style:none !important;
 }
