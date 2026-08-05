@@ -39,7 +39,7 @@ app.UseAuthorization();
 //Configure the HTTP Request pipeline
 app.UseMiddleware<ExceptionMiddleware>();
 
-app.UseCors(x=>x.AllowAnyHeader().AllowAnyMethod().AllowCredentials()
+app.UseCors(x=>x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().AllowAnyOrigin()
     .WithOrigins("http://localhost:4200","https://localhost:4200"));
 
 app.MapControllers();
