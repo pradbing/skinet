@@ -20,14 +20,14 @@ namespace API.Controllers
         {
             var user = new AppUser
             {
-                FirstName = registerDto.FirstName,
-                LastName=registerDto.LastName,
-                Email = registerDto.Email,
-                UserName=registerDto.Email
+                FirstName = registerDto.firstName,
+                LastName=registerDto.lastName,
+                Email = registerDto.email,
+                UserName=registerDto.email
             };
 
-            var result = await signInManager.UserManager.CreateAsync(user, registerDto.Password);
-
+            var result = await signInManager.UserManager.CreateAsync(user, registerDto.password);
+            
             if(!result.Succeeded)
             {
                 foreach (var error in result.Errors)
@@ -35,6 +35,10 @@ namespace API.Controllers
                     ModelState.AddModelError(error.Code, error.Description);
                 }
                 return ValidationProblem();
+            }
+            else
+            {
+                var result1 = await signInManager.UserManager.UpdateAsync(user);
             }
 
             return Ok();

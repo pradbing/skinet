@@ -9,12 +9,13 @@
             "name": "C#: API Debug",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/API.csproj"
+            "projectPath": "${workspaceFolder}/API/API.csproj"
         },
         {
             "name": ".NET Core Attach",
             "type": "coreclr",
-            "request": "attach"
+            "request": "attach",
+            "preLaunchTask": "build"
         },
         {
             "type": "chrome",
@@ -24,5 +25,11 @@
             "webRoot": "${workspaceFolder}/Client/"
         }
 
-    ]
+    ],
+  "compounds": [
+    {
+      "name": "Full Stack Debug",
+      "configurations": ["C#: API Debug",".NET Core Attach","Launch Chrome against localhost"]
+    }
+  ]
 }

@@ -25,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     MatButton,
     MatIcon,
     MatFormField,
-    MatInput,
+    MatInput, 
     MatLabel,
     MatDivider,
     FormsModule
@@ -40,8 +40,8 @@ export class ProductDetailsComponent  implements OnInit{
 
   private readonly destroyRef = inject(DestroyRef);
   product = signal<Product | undefined>(undefined) ;
-quantityInCart =0;
-quantity=1;
+  quantityInCart =0;
+  quantity=1;
   ngOnInit(): void {
     this.loadProduct();
   }
@@ -49,7 +49,6 @@ quantity=1;
   loadProduct(){
     const id=this.activatedRoute.snapshot.paramMap.get('id');
     if(!id) return;
-
  
     this.shopService.getProduct(+id).subscribe({
       next:product => {
@@ -72,8 +71,8 @@ quantity=1;
 
   updateCart(){
     if(!this.product()) return;
-    if(this.quantity> this.quantityInCart){
-      const itemsToAdd = this.quantity = this.quantityInCart;
+    if(this.quantity > this.quantityInCart){
+      const itemsToAdd =this.quantity - this.quantityInCart ;
       this.quantityInCart += itemsToAdd;
       this.cartService.addItemToCart(this.product()!, itemsToAdd);
     } else {

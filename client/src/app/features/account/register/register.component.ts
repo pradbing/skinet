@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { SnackbarService } from '../../../core/services/snackbar.service';
 import { JsonPipe } from '@angular/common';
 import { TextInputComponent } from "../../../shared/components/text-input/text-input.component";
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -19,9 +20,8 @@ import { TextInputComponent } from "../../../shared/components/text-input/text-i
     MatLabel,
     MatInput,
     MatButton,
-    JsonPipe,
-    MatError,
-    TextInputComponent
+    TextInputComponent,
+    JsonPipe
 ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
@@ -34,21 +34,24 @@ export class RegisterComponent {
   validationErrors?: string[];
 
   registerForm = this.fb.group({
-    firstName:['', Validators.required],
-    lastName:['', Validators.required],
-    email:['', [Validators.required, Validators.email]],
-    password:['', Validators.required]
+    firstName :["", Validators.required],
+    lastName:["", Validators.required],
+    email:["", [Validators.required, Validators.email]],
+    password:["", Validators.required]
   });
 
   onSubmit(){
+    console.log(this.registerForm.value) ;
     this.accountService.register(this.registerForm.value).subscribe({
       next:() => {
+          
           this.snack.success('Registration succesful - You can now login')
           this.router.navigateByUrl('/account/login')
       },
       error: errors=> this.validationErrors= errors
       
     })
+     
   }
 
 }
