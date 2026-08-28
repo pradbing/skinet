@@ -6,10 +6,17 @@ export class BusyService {
     busyRequestCount = 0;
 
     busy(){
-        this.loading.update(value => !value);
+        this.busyRequestCount++;
+        this.loading.set(true);
+        //this.loading.update(value => !value);
     }
 
     idle(){
-        this.loading.update(value => !value);
+        this.busyRequestCount--;
+        if(this.busyRequestCount <=0){
+            this.busyRequestCount = 0;
+            this.loading.set(false);
+        }
+        //this.loading.update(value => !value);
     }    
 }

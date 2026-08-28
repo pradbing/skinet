@@ -70,15 +70,16 @@ export class ProductDetailsComponent  implements OnInit{
   }
 
   updateCart(){
-    if(!this.product()) return;
+    const product = this.product();
+    if(!product) return;
     if(this.quantity > this.quantityInCart){
       const itemsToAdd =this.quantity - this.quantityInCart ;
       this.quantityInCart += itemsToAdd;
-      this.cartService.addItemToCart(this.product()!, itemsToAdd);
+      this.cartService.addItemToCart(product, itemsToAdd);
     } else {
       const itemsToRemove = this.quantityInCart - this.quantity;
       this.quantityInCart -= itemsToRemove;
-      this.cartService.removeItemFromCart(this.product()?.id!, itemsToRemove);
+      this.cartService.removeItemFromCart(product.id, itemsToRemove);
     }
   }
 }

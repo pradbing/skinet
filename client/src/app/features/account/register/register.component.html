@@ -3,15 +3,15 @@
         <div class="text-center mb-6">
             <h1 class="text-3xl font-semibold text-primary">Register</h1>
         </div>
-        <app-text-input type="text" label="First name"  formControlName="firstName"></app-text-input>
-        <app-text-input type="text" label="Last name"  formControlName="lastName"></app-text-input>
-        <app-text-input label="Email" type="email" formControlName="email"></app-text-input>
-        <app-text-input label="Password" formControlName="password" type="password"></app-text-input>     
+        <app-text-input type="text" label="First name"  formControlName="FirstName"></app-text-input>
+        <app-text-input type="text" label="Last name"  formControlName="LastName"></app-text-input>
+        <app-text-input label="Email" type="email" formControlName="Email"></app-text-input>
+        <app-text-input label="Password" formControlName="Password" type="password"></app-text-input>     
 
-        @if(validationErrors){
+        @if(validationErrors()){
             <div class="mb-3 p-4 bg-red-100 text-red-600">
                 <ul class="list-disc px-3">
-                    @for (error of validationErrors; track $index) {
+                    @for (error of validationErrors(); track $index) {
                         <li>{{error}}</li>
                     }
                 </ul>

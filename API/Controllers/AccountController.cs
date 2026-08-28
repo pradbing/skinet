@@ -1,13 +1,9 @@
-using System.Security.Claims;
 using API.DTOs;
 using API.Extensions;
 using Core.Entities;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 
 namespace API.Controllers
 {
@@ -16,17 +12,17 @@ namespace API.Controllers
     public class AccountController(SignInManager<AppUser> signInManager) : BaseApiController
     {
         [HttpPost("register")]
-        public async Task<ActionResult> Register(RegisterDto registerDto)
+        public async Task<ActionResult> Register([FromBody] RegisterDto registerDto)
         {
             var user = new AppUser
             {
-                FirstName = registerDto.firstName,
-                LastName=registerDto.lastName,
-                Email = registerDto.email,
-                UserName=registerDto.email
+                FirstName = registerDto.FirstName,
+                LastName=registerDto.LastName,
+                Email = registerDto.Email,
+                UserName=registerDto.Email
             };
 
-            var result = await signInManager.UserManager.CreateAsync(user, registerDto.password);
+            var result = await signInManager.UserManager.CreateAsync(user, registerDto.Password);
             
             if(!result.Succeeded)
             {
@@ -35,10 +31,6 @@ namespace API.Controllers
                     ModelState.AddModelError(error.Code, error.Description);
                 }
                 return ValidationProblem();
-            }
-            else
-            {
-                var result1 = await signInManager.UserManager.UpdateAsync(user);
             }
 
             return Ok();

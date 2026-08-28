@@ -1,27 +1,19 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject, signal } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
-import { MatInput } from '@angular/material/input';
-import { MatError, MatFormField, MatLabel } from '@angular/material/select';
 import { AccountService } from '../../../core/services/account.service';
 import { Router } from '@angular/router';
 import { SnackbarService } from '../../../core/services/snackbar.service';
-import { JsonPipe } from '@angular/common';
 import { TextInputComponent } from "../../../shared/components/text-input/text-input.component";
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   imports: [
     ReactiveFormsModule,
     MatCard,
-    MatFormField,
-    MatLabel,
-    MatInput,
     MatButton,
-    TextInputComponent,
-    JsonPipe
+    TextInputComponent
 ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
@@ -31,13 +23,13 @@ export class RegisterComponent {
   private accountService = inject(AccountService);
   private router = inject(Router);
   private snack = inject(SnackbarService);
-  validationErrors?: string[];
+  validationErrors = signal<string[] | undefined>(undefined);
 
   registerForm = this.fb.group({
-    firstName :["", Validators.required],
-    lastName:["", Validators.required],
-    email:["", [Validators.required, Validators.email]],
-    password:["", Validators.required]
+    FirstName :["", Validators.required],
+    LastName:["", Validators.required],
+    Email:["", [Validators.required, Validators.email]],
+    Password:["", Validators.required]
   });
 
   onSubmit(){
@@ -48,7 +40,7 @@ export class RegisterComponent {
           this.snack.success('Registration succesful - You can now login')
           this.router.navigateByUrl('/account/login')
       },
-      error: errors=> this.validationErrors= errors
+      error: errors=> this.validationErrors.set(errors)
       
     })
      
