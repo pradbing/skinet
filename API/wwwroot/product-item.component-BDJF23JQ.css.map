@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/shop/product-item/product-item.component.scss", "src/app/features/shop/product-item/product-item.component.scss"],
+  "sourcesContent": [".product-card{\r\n    transition: transform 0.2s, box-shadow 0.2s;\r\n\r\n}\r\n\r\n.product-card:hover {\r\n    transform: translateY(-10px);\r\n    box-shadow: 0 4px 8px rgba(0,0,0,0.2);\r\n    cursor:pointer;\r\n}", ".product-card {\n  transition: transform 0.2s, box-shadow 0.2s;\n}\n\n.product-card:hover {\n  transform: translateY(-10px);\n  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJmaWxlOi8vL0M6L1VzZXJzL1ByYWRlL3NraW5ldC9jbGllbnQvc3JjL2FwcC9mZWF0dXJlcy9zaG9wL3Byb2R1Y3QtaXRlbS9wcm9kdWN0LWl0ZW0uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSTs7O0FBSUo7RUFDSTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIucHJvZHVjdC1jYXJke1xyXG4gICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMnMsIGJveC1zaGFkb3cgMC4ycztcclxuXHJcbn1cclxuXHJcbi5wcm9kdWN0LWNhcmQ6aG92ZXIge1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVZKC0xMHB4KTtcclxuICAgIGJveC1zaGFkb3c6IDAgNHB4IDhweCByZ2JhKDAsMCwwLDAuMik7XHJcbiAgICBjdXJzb3I6cG9pbnRlcjtcclxufSJdfQ== */"],
+  "mappings": "AAAA,CAAA,aACI,WAAA,UAAA,GAAA,CAAA,WAAA,GCCJ,CDGA,CALA,YAKA,OACI,UAAA,WAAA,OACA,WAAA,EAAA,IAAA,IAAA,MACA,OAAA,OCAJ",
+  "names": []
+}

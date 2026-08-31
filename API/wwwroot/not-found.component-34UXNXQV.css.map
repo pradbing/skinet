@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/not-found/not-found.component.scss", "src/app/shared/components/not-found/not-found.component.scss"],
+  "sourcesContent": [".icon-display{\r\n    transform:scale(3);\r\n}", ".icon-display {\n  transform: scale(3);\n}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJmaWxlOi8vL0M6L1VzZXJzL1ByYWRlL3NraW5ldC9jbGllbnQvc3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9ub3QtZm91bmQvbm90LWZvdW5kLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kiLCJzb3VyY2VzQ29udGVudCI6WyIuaWNvbi1kaXNwbGF5e1xyXG4gICAgdHJhbnNmb3JtOnNjYWxlKDMpO1xyXG59Il19 */"],
+  "mappings": "AAAA,CAAA,aACI,UAAA,MAAA,ECCJ",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/home/home.component.scss", "src/app/features/home/home.component.scss"],
+  "sourcesContent": [".btn-lg {\r\n  font-size: 30px;\r\n  padding: 24px 38px;\r\n  height: auto;\r\n  min-width: 120px;\r\n}", ".btn-lg {\n  font-size: 30px;\n  padding: 24px 38px;\n  height: auto;\n  min-width: 120px;\n}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJmaWxlOi8vL0M6L1VzZXJzL1ByYWRlL3NraW5ldC9jbGllbnQvc3JjL2FwcC9mZWF0dXJlcy9ob21lL2hvbWUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5idG4tbGcge1xyXG4gIGZvbnQtc2l6ZTogMzBweDtcclxuICBwYWRkaW5nOiAyNHB4IDM4cHg7XHJcbiAgaGVpZ2h0OiBhdXRvO1xyXG4gIG1pbi13aWR0aDogMTIwcHg7XHJcbn0iXX0= */"],
+  "mappings": "AAAA,CAAA,OACE,UAAA,KADF,QAEE,KAAA,KACA,OAAA,KACA,UAAA,KCCF",
+  "names": []
+}

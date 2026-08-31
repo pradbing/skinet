@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/empty-state/empty-state.component.scss", "src/app/shared/components/empty-state/empty-state.component.scss"],
+  "sourcesContent": [".icon-display{\r\n    transform:scale(3);\r\n}", ".icon-display {\n  transform: scale(3);\n}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJmaWxlOi8vL0M6L1VzZXJzL1ByYWRlL3NraW5ldC9jbGllbnQvc3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9lbXB0eS1zdGF0ZS9lbXB0eS1zdGF0ZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJIiwic291cmNlc0NvbnRlbnQiOlsiLmljb24tZGlzcGxheXtcclxuICAgIHRyYW5zZm9ybTpzY2FsZSgzKTtcclxufSJdfQ== */"],
+  "mappings": "AAAA,CAAA,aACI,UAAA,MAAA,ECCJ",
+  "names": []
+}
