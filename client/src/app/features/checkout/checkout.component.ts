@@ -54,9 +54,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     {address:false, card:false, delivery:false}
   );
 
-  //confirmationToken?:ConfirmationToken;
   confirmationToken= signal<ConfirmationToken | undefined>(undefined);
-  //loading = false;
+
   loading=signal(false);
 
   async ngOnInit() {

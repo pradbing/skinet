@@ -24,11 +24,12 @@ export class CheckoutDeliveryComponent implements OnInit {
     this.checkOutService.getDeliveryMethods().subscribe({
       next:methods => {
         if(this.cartService.cart()?.deliveryMethodId){
-          const method = methods.find(x=>x.id===this.cartService.cart()?.deliveryMethodId);
+          const method = methods()?.find(x=>x.id==this.cartService.cart()?.deliveryMethodId);
           if(method){
             this.cartService.selectedDelivery.set(method);
             this.deliveryComplete.emit(true);
           }
+          
         }
       }
     });
