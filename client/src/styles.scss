@@ -1,12 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+// @import 'tailwindcss';
 
-@import 'tailwindcss';
+:root {
+  @include mat.button-overrides((
+    filled-container-shape: 6px,
+    outlined-container-shape: 6px,
+  ));
 
-.container {
-    @apply mx-auto px-6 max-w-screen-2xl
-}
-.text-primary{
-    @apply text-blue-700
+  @include mat.badge-overrides((
+    background-color: blue,
+  ));
 }
 
 button.match-input-height{
