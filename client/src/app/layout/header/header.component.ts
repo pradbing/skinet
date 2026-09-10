@@ -8,6 +8,7 @@ import { MatProgressBar } from '@angular/material/progress-bar';
 import { CartService } from '../../core/services/cart.service';
 import { AccountService } from '../../core/services/account.service';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
+import { IsAdmin } from "../../shared/directives/is-admin";
 @Component({
   selector: 'app-header',
   imports: [
@@ -19,7 +20,8 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
     MatProgressBar,
     MatMenuTrigger,
     MatMenu,
-    MatMenuItem
+    MatMenuItem,
+    IsAdmin
 ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
