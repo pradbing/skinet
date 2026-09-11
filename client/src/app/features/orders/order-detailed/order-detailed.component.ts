@@ -1,12 +1,14 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { OrderService } from '../../../core/services/order.service';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from '../../../shared/models/order';
 import { MatCardModule } from '@angular/material/card';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { AddressPipe } from "../../../shared/pipes/address-pipe";
 import { PaymentPipe } from "../../../shared/pipes/payment-pipe";
 import { MatAnchor } from "@angular/material/button";
+import { AccountService } from '../../../core/services/account.service';
+import { AdminService } from '../../../core/services/admin.service';
 
 @Component({
   selector: 'app-order-detailed',
@@ -16,8 +18,7 @@ import { MatAnchor } from "@angular/material/button";
     CurrencyPipe,
     AddressPipe,
     PaymentPipe,
-    MatAnchor,
-    RouterLink
+    MatAnchor
 ],
   templateUrl: './order-detailed.component.html',
   styleUrl: './order-detailed.component.scss',
@@ -27,19 +28,34 @@ export class OrderDetailedComponent implements OnInit {
   private orderService = inject(OrderService);
   private activatedRoute=inject(ActivatedRoute); 
   order = signal<Order | undefined>(undefined);
+  private accountService = inject(AccountService);
+  private adminService = inject(AdminService);
+  private router = inject(Router);
+
+  buttonText = this.accountService.isAdmin()? 'Return to admin' : 'Return to orders'
 
   ngOnInit(): void {
     this.loadOrder();
   }
+
+  onReturnClick(){
+    this.accountService.isAdmin()
+      ? this.router.navigateByUrl('/admin')
+      : this.router.navigateByUrl('/orders')
+  }
+
   loadOrder() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if(!id) return;
 
-    this.orderService.getOrderedDetailed(+id).subscribe({
-      next:order => this.order.set(order) 
-    })
-  }
+    const loadOrderData = this.accountService.isAdmin()
+      ? this.adminService.getOrder(+id)
+      : this.orderService.getOrderedDetailed(+id);
 
-  
+    loadOrderData.subscribe({
+      next: order => this.order.set(order)
+    })
+
+  }
   
 }

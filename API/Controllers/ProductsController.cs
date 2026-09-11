@@ -2,6 +2,7 @@ using API.RequestHelpers;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -30,6 +31,7 @@ namespace API.Controllers
             return product;
         }
 
+        [Authorize(Roles ="Admin")]
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct(Product product)
         {
@@ -41,6 +43,7 @@ namespace API.Controllers
             return BadRequest("Product could not be added");
         }
 
+        [Authorize(Roles ="Admin")]
         [HttpPut("{id:int}")]
         public async Task<ActionResult> UpdateProduct(int id, Product product)
         {
@@ -56,6 +59,7 @@ namespace API.Controllers
             
         }
 
+        [Authorize(Roles ="Admin")]
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> DeleteProduct(int id)
         {
@@ -70,7 +74,7 @@ namespace API.Controllers
             }
              return BadRequest("Delete unsuccesful");
         }
-
+        
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<string>>> GetBrands()
         {
