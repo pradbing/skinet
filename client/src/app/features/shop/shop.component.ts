@@ -12,8 +12,6 @@ import { ShopParams } from '../../shared/models/shopParams';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Pagination } from '../../shared/models/pagination';
 import { FormsModule } from '@angular/forms';
-import { tap } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { EmptyStateComponent } from "../../shared/components/empty-state/empty-state.component";
 
 @Component({
@@ -38,7 +36,6 @@ import { EmptyStateComponent } from "../../shared/components/empty-state/empty-s
   private shopService = inject(ShopService);
   private dialogService = inject(MatDialog);
   private readonly destroyRef = inject(DestroyRef);
-  //products?: Pagination<Product> ;
 products = signal<Pagination<Product> | undefined>(undefined);
   sortOptions = [
     {name:'Alphabetical', value:'name'    },
@@ -69,17 +66,11 @@ getProducts(){
   next:response => this.products.set(response),
   error:error => console.error(error)
   });
-
-  // this.shopService.getProducts(this.shopParams).pipe(
-  // tap(data=>this.products.set(data)),
-  // takeUntilDestroyed(this.destroyRef)
-  // ).subscribe();
   
 }
 
 onSearchChange(){
   this.shopParams.pageNumber = 1;
-  //this.getProducts();
   this.shopService.getProducts(this.shopParams).subscribe({
   next:response => this.products.set(response),
   error:error => console.error(error)
